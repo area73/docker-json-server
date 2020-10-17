@@ -5,7 +5,7 @@ This is a [docker](https://www.docker.io) image that eases setup.
 
 ## Usage
 
-This docker image is available as a [trusted build on the docker index](https://index.docker.io/u/clue/json-server/),
+This docker image is available as a [trusted build on the docker index](https://index.docker.io/u/boogie00/json-server/),
 so there's no setup required.
 Using this image for the first time will start a download automatically.
 Further runs will be immediate, as the image will be cached locally.
@@ -78,3 +78,26 @@ module.exports = function() {
   return data;
 }
 ```
+
+### Extras
+This distribution has also added support for [faker.js](https://github.com/marak/Faker.js/),
+so in case you want to add a db.js that uses faker.
+
+An example could be something like this:
+```javascript
+
+const faker = require('faker');
+
+const createUser = id => ({
+  id,
+  ...faker.helpers.createCard(),
+  avatar: faker.image.avatar(),
+  registrationDate: faker.date.past()
+})
+
+module.exports = () =>({"users": [...Array(200).keys()].map(i => createUser(i))})
+```
+
+
+
+

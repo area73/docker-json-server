@@ -1,7 +1,7 @@
 FROM node:latest
-MAINTAINER Christian Lück <christian@lueck.tv>
+MAINTAINER Rodrigo Erades <rerades@siete3.com>
 
-RUN npm install -g json-server
+RUN npm install -g json-server faker
 
 WORKDIR /data
 VOLUME /data
