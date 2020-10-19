@@ -8,7 +8,7 @@ This is a [docker](https://www.docker.io) image that eases setup.
 This docker image is available as a [trusted build on the docker index](https://index.docker.io/u/boogie00/json-server/),
 so there's no setup required.
 Using this image for the first time will start a download automatically.
-Further runs will be immediate, as the image will be cached locally.
+Further, runs will be immediate, as the image will be cached locally.
 
 The recommended way to run this container looks like this:
 
@@ -63,7 +63,7 @@ If you mount a file to `/data/file.js`,
 it will automatically be used as a JS seed file.
 
 JSON Server expects JS files to export a function that returns an object.
-Seed files are useful if you need to programmaticaly create a lot of data.
+Seed files are useful if you need to programmatically create a lot of data.
 
 A sample file could look like this:
 
