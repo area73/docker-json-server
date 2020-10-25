@@ -122,11 +122,26 @@ module.exports = () =>({"users": [...Array(200).keys()].map(i => createUser(i))}
 
 ### <a name="data-examples">Data examples<a>
 
+You can use data that are been shipped with this docker image
+
+To do so, you don't need to mount any additional file to the image since the image has all the required data
+
+Although you will need to pass the route tot eh file alocated in the image with an aditional parameter `-d`
+ 
 #### Todo
+```bash
+$ docker run -it -p 80:80 --name jserver --rm boogie00/json-server -d todo/db.json
+```
 
 #### faker
+```bash
+$ docker run -it -p 80:80 --name jserver --rm boogie00/json-server -d faker/db.js
+```
 
 #### StarWars
+```bash
+$ docker run -it -p 80:80 --name jserver --rm boogie00/json-server -d starwars/db.json
+```
 
 
 
