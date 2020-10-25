@@ -1,0 +1,46 @@
+{
+  "todos": [
+    {
+      "id": "1",
+      "value": "Rice",
+      "category": "supermarket",
+      "completed": false
+    },
+    {
+      "id": "2",
+      "value": "Potatoes",
+      "category": "supermarket",
+      "completed": true
+    },
+    {
+      "id": "3",
+      "value": "Eggs",
+      "category": "supermarket",
+      "completed": false
+    },
+    {
+      "id": "4",
+      "value": "Chocolate",
+      "category": "supermarket",
+      "completed": true
+    },
+    {
+      "id": "5",
+      "value": "Milk",
+      "category": "supermarket",
+      "completed": false
+    },
+    {
+      "id": "6",
+      "value": "build a particle system",
+      "category": "projects",
+      "completed": true
+    },
+    {
+      "id": "7",
+      "value": "build a flux capacitor",
+      "category": "projects",
+      "completed": false
+    }
+  ]
+}

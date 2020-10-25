@@ -1,8 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
-args="$@"
-
-args="$@ -p 80"
+args="$@ --host=0.0.0.0 -p 80"
 
 file=/data/db.json
 if [ -f $file ]; then
@@ -16,4 +14,18 @@ if [ -f $file ]; then
     args="$args file.js"
 fi
 
+while getopts ":d:" opt; do
+  case $opt in
+    d) sample_data="$OPTARG"
+      args="extras/${args//-d }"
+    ;;
+    \?) # echo "Invalid option -$OPTARG" >&2
+    ;;
+  esac
+done
+
+echo "Starting json-server with these arguments >>> $args "
+
 json-server $args
+
+

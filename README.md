@@ -13,7 +13,15 @@ Further, runs will be immediate, as the image will be cached locally.
 The recommended way to run this container looks like this:
 
 ```bash
-$ docker run -d -p 80:80 -v /home/user/articles.json:/data/db.json clue/json-server
+$ docker run -d -p 80:80 -v /home/user/articles.json:/data/db.json boogie00/json-server
+```
+
+Or if oyu want to use the example data supply with the image , then you don't need to 
+mount any volumnes and add a finalparameter -d <route of json/js file>.
+Please refer to [data examples](#data-examples) for more info on how to use data examples served in this distribution.
+
+```bash
+ docker run  --name jserver -it -p 80:80  --rm boogie00/json-server -d todo/db.json
 ```
 
 The above example exposes the JSON Server REST API on port 80, so that you can now browse to:
@@ -27,15 +35,29 @@ This is a rather common setup following docker's conventions:
 * `-d` will run a detached instance in the background
 * `-p {OutsidePort}:80` will bind the webserver to the given outside port
 * `-v {AbsolutePathToJsonFile}:/data/db.json` should be passed to mount the given JSON file into the container
-* `clue/json-server` the name of this docker image
+* `boogie00/json-server` the name of this docker image
 
 ### Help
 
 You can supply any number of JSON Server arguments that will be passed through unmodified.
 
+For example if you need to pass routes to the server you can mount the file to be pass and then
+adding the argument at the end
 ```bash
 $ docker run -it --rm clue/json-server --help
+$ docker run -it -p 80:80 --name jserver -v ${PWD}/data/todo/db.json:/data/db.json -v ${PWD}/data/todo/routes.json:/data/routes.json --rm boogie00/json-server -r routes.json
 ```
+* `-i` interactive        
+* `-t` opens TTY
+* `-p {OutsidePort}:80` will bind the webserver to the given outside port
+* `--name` name of the container to easily find it
+* `-v {AbsolutePathToJsonFile}:/data/db.json` should be passed to mount the given JSON file into the container
+* `-v {AbsolutePathToJsonFile}:/data/routes.json` should be passed to mount the given JSON file into the container and use as routes
+* `--rm` Remove container onces stops
+* `boogie00/json-server` the name of this docker image
+* `-r` Json-server parameter for telling server the name of the routes file
+
+
 
 ### JSON source
 
@@ -97,6 +119,14 @@ const createUser = id => ({
 
 module.exports = () =>({"users": [...Array(200).keys()].map(i => createUser(i))})
 ```
+
+### <a name="data-examples">Data examples<a>
+
+#### Todo
+
+#### faker
+
+#### StarWars
 
 
 
